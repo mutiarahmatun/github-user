@@ -14,7 +14,7 @@ class TabLayout : AppCompatActivity() {
 
     companion object {
         @StringRes
-        private val TAB_TITLES = intArrayOf(
+        private val TAB_TITLE = intArrayOf(
             R.string.tag_profile,
             R.string.tag_followers,
             R.string.tag_following
@@ -35,8 +35,8 @@ class TabLayout : AppCompatActivity() {
         tabLayoutBinding.viewPager.adapter = adapterSection
 
         TabLayoutMediator(tabLayoutBinding.tabs, tabLayoutBinding.viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-            tempTab = resources.getString(TAB_TITLES[position])
+            tab.text = resources.getString(TAB_TITLE[position])
+//            tempTab = resources.getString(TAB_TITLE[position])
         }.attach()
         supportActionBar?.elevation = 0f
 
