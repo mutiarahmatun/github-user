@@ -15,11 +15,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FollowersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FollowersFragment : Fragment(R.layout.fragment_followers) {
 
     private var _followersBinding: FragmentFollowersBinding? = null
@@ -27,7 +22,7 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         get() = requireNotNull(_followersBinding)
 
     private var users = mutableListOf<Users>()
-    private var listUserAdapter = UsersAdapter(users)
+    private var usersAdapter = UsersAdapter(users)
     var tempFollower = Users("This user has 0 of Follower","", "", "","","","","")
     var tempFollowing = Users("This user has 0 of Following","", "", "","","","","")
 
@@ -52,7 +47,7 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _followersBinding = FragmentFollowersBinding.inflate(inflater, container, false)
         return followersBinding.root
     }
@@ -61,15 +56,17 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         super.onViewCreated(view, savedInstanceState)
 
         followersBinding.rvFollowers.setHasFixedSize(true)
-        followersBinding.rvFollowers.adapter = listUserAdapter
+        followersBinding.rvFollowers.adapter = usersAdapter
         followersBinding.rvFollowers.layoutManager = LinearLayoutManager(activity)
         followersBinding.progressBarFollowers.visibility = View.VISIBLE
 
-        getListApi()
+        getListFollowersOrFollowings()
     }
 
-    private fun getListApi() {
+    private fun getListFollowersOrFollowings() {
+
         followersBinding.progressBarFollowers.visibility = View.VISIBLE
+
         val index = arguments?.getInt(ARG_SECTION_NUMBER, 0)
         val username = arguments?.getString(ARG_USERNAME)
 
@@ -79,21 +76,23 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
 
         client.addHeader("Authorization", "token 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")
         client.addHeader("User-Agent", "request")
+
         val url = "https://api.github.com/users/${username}/${tab}"
 
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
 
-                // Jika koneksi berhasil
+                // Jika berhasil tersambung
                 followersBinding.progressBarFollowers.visibility = View.INVISIBLE
 
                 // Parsing JSON
                 val result = String(responseBody)
-                getListUsers(result)
+                getUsers(result)
 
             }
             override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
-                // Jika koneksi gagal
+
+                // Jika gagal tersambung
                 followersBinding.progressBarFollowers.visibility = View.INVISIBLE
 
                 val errorMessage = when (statusCode) {
@@ -107,40 +106,48 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         })
     }
 
-    private fun getListUsers(response: String) {
+    private fun getUsers(response: String) {
+
         val listUser = ArrayList<Users>()
         var dummyUser = tempFollower
+
         if(tab == "following") dummyUser = tempFollowing
 
         try{
             val dataArray = JSONArray(response)
 
-            val gson = Gson()
             for(i in 0 until dataArray.length()){
                 val dataObject = dataArray.getJSONObject(i)
-                val data = gson.fromJson(dataObject.toString(), Users::class.java)
+                val data = Gson().fromJson(dataObject.toString(), Users::class.java)
                 listUser.add(data)
             }
 
-            if(listUser.size == 0){
-                users.clear()
-                users.add(dummyUser)
+            when {
+                listUser.size == 0 -> {
+                    users.clear()
+                    users.add(dummyUser)
+                }
+
+                users.size == 0 -> users.addAll(listUser)
+
+                else -> {
+                    users.clear()
+                    users.addAll(listUser)
+                }
             }
-            else if(users.size == 0 ) users.addAll(listUser)
-            else{
-                users.clear()
-                users.addAll(listUser)
-            }
+
             showRecyclerList(users)
+
         } catch (e: Exception) {
             makeText(activity, e.message, Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
 
-    private fun showRecyclerList(usersTemp: MutableList<Users>) {
-        listUserAdapter = UsersAdapter(usersTemp)
+    private fun showRecyclerList(user: MutableList<Users>) {
+        usersAdapter = UsersAdapter(user)
         followersBinding.rvFollowers.adapter?.notifyDataSetChanged();
     }
+
 
 }

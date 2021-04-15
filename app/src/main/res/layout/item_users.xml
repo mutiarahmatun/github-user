@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +52,7 @@
 <!--        android:layout_marginStart="26dp"-->
 <!--        android:layout_marginTop="16dp"-->
 <!--        android:layout_toRightOf="@id/img_photo"-->
-<!--        android:text="@string/following"-->
+<!--        tools:text="@string/following"-->
 <!--        android:textSize="12sp"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
@@ -69,7 +69,7 @@
 <!--        android:layout_marginStart="26dp"-->
 <!--        android:layout_marginTop="16dp"-->
 <!--        android:layout_toRightOf="@id/following"-->
-<!--        android:text="@string/followers"-->
+<!--        tools:text="@string/followers"-->
 <!--        android:textSize="12sp"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->

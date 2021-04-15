@@ -22,4 +22,6 @@
     <string name="CouldNotFind">Sorry, this username could not been find</string>
     <string name="ZeroFollower">This user has 0 of Follower</string>
     <string name="ZeroFollowing">This user has 0 of Following</string>
+    <string name="following" translatable="false">following</string>
+    <string name="followers" translatable="false">followers</string>
 </resources>

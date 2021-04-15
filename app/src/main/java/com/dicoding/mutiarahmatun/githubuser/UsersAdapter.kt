@@ -39,15 +39,18 @@ class UsersAdapter (private val listUsers: MutableList<Users>) : RecyclerView.Ad
                 if(users.username.equals("Please try with another username")) {
                     txtName.text = users.name
                     txtUsername.text = users.username
-//                    following.text = users.following + " following"
-//                    followers.text = users.followers + " follower"
                 }
                 else {
                     txtName.text = users.username
-                    txtUsername.text = "@${users.username}"
-//                    following.text = users.following + " following"
-//                    followers.text = users.followers + " follower"
+                    if (users.username == "This user has 0 of Follower" || users.username == "This user has 0 of Following") {
+                        txtUsername.text = ""
+                    } else {
+                        txtUsername.text = "@${users.username}"
+                    }
+
                 }
+//                following.text = users.following + " following"
+//                followers.text = users.followers + " follower"
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(users) }
             }

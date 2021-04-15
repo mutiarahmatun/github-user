@@ -19,13 +19,13 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _detailBinding = FragmentDetailUserBinding.inflate(inflater, container, false)
         return detailBinding.root
     }
 
     override fun onDestroyView() {
-        // Do not store the binding instance in a field, if not required.
+
         super.onDestroyView()
         _detailBinding = null
     }
@@ -41,9 +41,9 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
         detailBinding.tvNameReceived.text = users.name?: users.username
         detailBinding.tvLocationReceived.text = users.location?: "unknown location"
         detailBinding.tvCompanyReceived.text = users.company?: "unknown company"
-        detailBinding.tvRepoReceived.text = users.repository.toString()
-        detailBinding.tvFollowersReceived.text = users.followers.toString()
-        detailBinding.tvFollowingReceived.text = users.following.toString()
+        detailBinding.tvRepoReceived.text = users.repository
+        detailBinding.tvFollowersReceived.text = users.followers
+        detailBinding.tvFollowingReceived.text = users.following
         detailBinding.repository.text = getString(R.string.tag_repo)
         detailBinding.followers.text = getString(R.string.tag_followers)
         detailBinding.following.text = getString(R.string.tag_following)

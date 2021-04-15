@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TabLayout : AppCompatActivity() {
     private lateinit var tabLayoutBinding: ActivityTabLayoutBinding
     private var title: String = "Detail's User"
+    private var tempTab: String = ""
 
     companion object {
         @StringRes
@@ -22,7 +23,9 @@ class TabLayout : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         tabLayoutBinding = ActivityTabLayoutBinding.inflate(layoutInflater)
         setContentView(tabLayoutBinding.root)
 
@@ -31,21 +34,33 @@ class TabLayout : AppCompatActivity() {
         val adapterSection = AdapterSection(this, users)
         tabLayoutBinding.viewPager.adapter = adapterSection
 
-        //menghubungkan ViewPager2 dengan TabLayout dengan menggunakan TabLayoutMediator
         TabLayoutMediator(tabLayoutBinding.tabs, tabLayoutBinding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
+            tempTab = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
 
-        title = "Detail of ${users.name?: users.username}"
+        title = when (tempTab) {
+            "Profile" -> {
+                "Detail of ${users.name?: users.username}"
+            }
+            "Followers" -> {
+                "Followers of ${users.name?: users.username}"
+            }
+            "Following" -> {
+                "Following of ${users.name?: users.username}"
+            }
+            else -> {
+                "Detail of ${users.name?: users.username}"
+            }
+        }
         setActionBarTitle(title)
 
-        // calling the action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
+        when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 return true
