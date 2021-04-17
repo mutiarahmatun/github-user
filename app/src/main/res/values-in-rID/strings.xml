@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github Users</string>
+    <string name="name_users">Nama Pengguna</string>
+    <string name="tag_repo">Repositori</string>
+    <string name="tag_followers">Pengikut</string>
+    <string name="tag_following">Mengikuti</string>
+    <string name="location">Lokasi</string>
+    <string name="company">Perusahaan</string>
+
+    <string name="tag_profile">Profil</string>
+    <string name="menu_1">Pengaturan</string>
+    <string name="search">Cari</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="hint">Cari berdasarkan username</string>
+
+    <string name="TryOtherUname">Silahkan cari username lainnya</string>
+    <string name="CouldNotFind">Maaf, username ini tidak ditemukan</string>
+    <string name="ZeroFollower">Pengguna ini memiliki 0 pengikut</string>
+    <string name="ZeroFollowing">Pengguna ini mengikuti 0 pengguna</string>
+</resources>
