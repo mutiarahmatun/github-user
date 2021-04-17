@@ -24,4 +24,6 @@
     <string name="ZeroFollowing">This user has 0 of Following</string>
     <string name="following" translatable="false">following</string>
     <string name="followers" translatable="false">followers</string>
+    <string name="narasi" translatable="false">Developed with love by</string>
+    <string name="developer" translatable="false">Mutia Rahmatun Husna</string>
 </resources>
