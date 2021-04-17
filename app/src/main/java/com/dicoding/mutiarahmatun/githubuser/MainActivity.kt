@@ -68,17 +68,14 @@ class MainActivity : AppCompatActivity(){
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
 
-                // Jika berhasil tersambung
                 activityBinding.progressBar.visibility = View.INVISIBLE
 
-                // Parsing JSON
                 val result = String(responseBody)
                 getListUsers(result)
 
             }
             override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
 
-                // Jika gagal tersambung
                 activityBinding.progressBar.visibility = View.INVISIBLE
 
                 val errorMessage = when (statusCode) {

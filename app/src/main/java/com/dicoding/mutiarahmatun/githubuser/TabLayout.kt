@@ -10,14 +10,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TabLayout : AppCompatActivity() {
     private lateinit var tabLayoutBinding: ActivityTabLayoutBinding
     private var title: String = "Detail's User"
-    private var tempTab: String = ""
+//    private var tempTab: String = ""
 
     companion object {
         @StringRes
         private val TAB_TITLE = intArrayOf(
             R.string.tag_profile,
-            R.string.tag_followers,
-            R.string.tag_following
+            R.string.tag_following,
+                R.string.tag_followers
         )
         const val EXTRA_USER = "extra_user"
     }
@@ -40,7 +40,8 @@ class TabLayout : AppCompatActivity() {
         }.attach()
         supportActionBar?.elevation = 0f
 
-        title = "Detail of ${users.name?: users.username}"
+        title = "Detail's of ${users.name?: users.username}"
+
 //                when (tempTab) {
 //            "Profile" -> {
 //                "Detail of ${users.name?: users.username}"

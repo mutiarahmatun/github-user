@@ -71,8 +71,8 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         val username = arguments?.getString(ARG_USERNAME)
 
         val client = AsyncHttpClient()
-        if(index == 1) tab = "followers"
-        else if(index == 2) tab = "following"
+        if(index == 1) tab = "following"
+        else if(index == 2) tab = "followers"
 
         client.addHeader("Authorization", "token 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")
         client.addHeader("User-Agent", "request")
@@ -82,17 +82,13 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
 
-                // Jika berhasil tersambung
                 followersBinding.progressBarFollowers.visibility = View.INVISIBLE
 
-                // Parsing JSON
                 val result = String(responseBody)
                 getUsers(result)
-
             }
             override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
 
-                // Jika gagal tersambung
                 followersBinding.progressBarFollowers.visibility = View.INVISIBLE
 
                 val errorMessage = when (statusCode) {
