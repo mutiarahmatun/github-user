@@ -13,31 +13,28 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
 
     private var _detailBinding: FragmentDetailUserBinding? = null
     private val detailBinding: FragmentDetailUserBinding get() = requireNotNull(_detailBinding)
-    var users: Users = detailsUser
+    private var users: Users = detailsUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _detailBinding = FragmentDetailUserBinding.inflate(inflater, container, false)
         return detailBinding.root
     }
 
     override fun onDestroyView() {
-
         super.onDestroyView()
         _detailBinding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         Glide.with(this)
             .load(users.avatar)
             .apply(RequestOptions().override(550, 550))
             .into(detailBinding.imgAvatarReceived)
-        detailBinding.tvUsernameReceived.text = "@${users.username}"
+        detailBinding.tvUsernameReceived.text = StringBuilder("@${users.username}")
         detailBinding.tvNameReceived.text = users.name?: users.username
         detailBinding.tvLocationReceived.text = users.location?: "unknown location"
         detailBinding.tvCompanyReceived.text = users.company?: "unknown company"

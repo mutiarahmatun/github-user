@@ -23,10 +23,10 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
 
     private var users = mutableListOf<Users>()
     private var usersAdapter = UsersAdapter(users)
-    var tempFollower = Users("This user has 0 of Follower","", "", "","","","","")
-    var tempFollowing = Users("This user has 0 of Following","", "", "","","","","")
+    private var tempFollower = Users("This user has 0 of Follower","", "", "","","","","")
+    private var tempFollowing = Users("This user has 0 of Following","", "", "","","","","")
 
-    var tab = ""
+    private var tab = ""
 
     companion object {
 
@@ -47,7 +47,6 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _followersBinding = FragmentFollowersBinding.inflate(inflater, container, false)
         return followersBinding.root
     }
@@ -74,7 +73,7 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         if(index == 1) tab = "following"
         else if(index == 2) tab = "followers"
 
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/users/${username}/${tab}"

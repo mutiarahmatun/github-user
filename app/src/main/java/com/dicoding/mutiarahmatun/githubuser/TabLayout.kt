@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TabLayout : AppCompatActivity() {
     private lateinit var tabLayoutBinding: ActivityTabLayoutBinding
     private var title: String = "Detail's User"
-//    private var tempTab: String = ""
 
     companion object {
         @StringRes
@@ -36,26 +35,10 @@ class TabLayout : AppCompatActivity() {
 
         TabLayoutMediator(tabLayoutBinding.tabs, tabLayoutBinding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLE[position])
-//            tempTab = resources.getString(TAB_TITLE[position])
         }.attach()
         supportActionBar?.elevation = 0f
 
         title = "Detail's of ${users.name?: users.username}"
-
-//                when (tempTab) {
-//            "Profile" -> {
-//                "Detail of ${users.name?: users.username}"
-//            }
-//            "Follower" -> {
-//                "Followers of ${users.name?: users.username}"
-//            }
-//            "Following" -> {
-//                "Following of ${users.name?: users.username}"
-//            }
-//            else -> {
-//                "Detail of ${users.name?: users.username}"
-//            }
-//        }
         setActionBarTitle(title)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

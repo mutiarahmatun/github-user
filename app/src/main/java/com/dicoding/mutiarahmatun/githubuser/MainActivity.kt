@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(){
     private var users = mutableListOf<Users>()
 
     private var userAdapter = UsersAdapter(users)
-    var dummyUser = Users("Please try with another username","Sorry, this username could not been find", "", "","","","","")
+    private var dummyUser = Users("Please try with another username","Sorry, this username could not been find", "", "","","","","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -55,12 +55,11 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun getUsers() {
-
         activityBinding.progressBar.visibility = View.VISIBLE
 
         val client = AsyncHttpClient()
 
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/search/users?q=$tempSearch"
@@ -103,7 +102,7 @@ class MainActivity : AppCompatActivity(){
             }
 
             when {
-                listUser.size == 0 -> {
+                listUser.isEmpty() -> {
                     users.clear()
                     users.add(dummyUser)
                 }
@@ -130,10 +129,9 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun getDetailsUser(detailUsers: Users) {
-
         val clientDetail = AsyncHttpClient()
 
-        clientDetail.addHeader("Authorization", "token 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")
+        clientDetail.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         clientDetail.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/users/${detailUsers.username}"

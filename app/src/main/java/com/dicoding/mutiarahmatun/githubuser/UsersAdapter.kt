@@ -11,6 +11,12 @@ class UsersAdapter (private val listUsers: MutableList<Users>) : RecyclerView.Ad
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
+    companion object {
+
+        private const val NULL_FOLLOWERS = "This user has 0 of Follower"
+        private const val NULL_FOLLOWINGS = "This user has 0 of Following"
+    }
+
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
@@ -42,15 +48,13 @@ class UsersAdapter (private val listUsers: MutableList<Users>) : RecyclerView.Ad
                 }
                 else {
                     txtName.text = users.username
-                    if (users.username == "This user has 0 of Follower" || users.username == "This user has 0 of Following") {
+                    if (users.username == NULL_FOLLOWERS || users.username == NULL_FOLLOWINGS) {
                         txtUsername.text = ""
                     } else {
-                        txtUsername.text = "@${users.username}"
+                        txtUsername.text = StringBuilder("@${users.username}")
                     }
 
                 }
-//                following.text = users.following + " following"
-//                followers.text = users.followers + " follower"
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(users) }
             }
