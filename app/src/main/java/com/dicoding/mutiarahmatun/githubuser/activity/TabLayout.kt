@@ -16,7 +16,7 @@ class TabLayout : AppCompatActivity() {
 
     companion object {
         @StringRes
-        private val TAB_TITLE = intArrayOf(
+        internal val TAB_TITLE = intArrayOf(
                 R.string.tag_profile,
                 R.string.tag_following,
                 R.string.tag_followers

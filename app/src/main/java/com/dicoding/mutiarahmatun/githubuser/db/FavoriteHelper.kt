@@ -10,10 +10,12 @@ import com.dicoding.mutiarahmatun.githubuser.db.DatabaseContract.FavoriteColumns
 import java.sql.SQLException
 
 class FavoriteHelper(context: Context) {
-    private var dataBaseHelper: DatabaseHelper = DatabaseHelper(context)
-    private lateinit var database: SQLiteDatabase
+
 
     companion object {
+        private lateinit var dataBaseHelper: DatabaseHelper
+        private lateinit var database: SQLiteDatabase
+
         private const val DATABASE_TABLE = TABLE_NAME
 
         private var INSTANCE: FavoriteHelper? = null
@@ -34,7 +36,7 @@ class FavoriteHelper(context: Context) {
 
     fun close() {
         dataBaseHelper.close()
-        if (database.isOpen)
+        if (database.isOpen && database != null)
             database.close()
     }
 
@@ -61,16 +63,32 @@ class FavoriteHelper(context: Context) {
             null)
     }
 
+    fun queryById(id: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$COLUMN_ID = ?",
+            arrayOf(id),
+            null,
+            null,
+            null,
+            null)
+    }
+
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }
 
-    fun update(username: String, values: ContentValues?): Int {
-        return database.update(DATABASE_TABLE, values, "$COLUMN_NAME_USERNAME = ?", arrayOf(username))
+    fun update(id: String, values: ContentValues?): Int {
+        return database.update(DATABASE_TABLE, values, "$COLUMN_ID = ?", arrayOf(id))
     }
 
     fun deleteByUserName(username: String?): Int {
         return database.delete(DATABASE_TABLE, "$COLUMN_NAME_USERNAME = '$username'", null)
+    }
+
+    fun deleteById(id: String): Int {
+        return database.delete(DATABASE_TABLE, "$COLUMN_ID = '$id'", null)
     }
 
 }

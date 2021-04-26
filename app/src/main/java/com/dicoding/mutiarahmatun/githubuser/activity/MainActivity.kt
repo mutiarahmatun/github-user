@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity(){
 
         userAdapter.setOnItemClickCallback(object : UsersAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Users) {
-                getDetailsUser(data)
+                getDetailsUser(data, data.id)
             }
         })
     }
@@ -101,6 +100,7 @@ class MainActivity : AppCompatActivity(){
             for(i in 0 until dataArray.length()){
                 val dataObject = dataArray.getJSONObject(i)
                 val data = Gson().fromJson(dataObject.toString(), Users::class.java)
+                data.id = i
                 listUser.add(data)
             }
 
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity(){
         activityBinding.rvUsers.adapter?.notifyDataSetChanged();
     }
 
-    private fun getDetailsUser(detailUsers: Users) {
+    private fun getDetailsUser(detailUsers: Users, position: Int) {
         val clientDetail = AsyncHttpClient()
 
         clientDetail.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
@@ -147,6 +147,7 @@ class MainActivity : AppCompatActivity(){
 
                 val dataObject = JSONObject(resultDetail)
                 val newUser = Gson().fromJson(dataObject.toString(), Users::class.java)
+                newUser.id = position
                 showSelectedUser(newUser)
             }
             override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {

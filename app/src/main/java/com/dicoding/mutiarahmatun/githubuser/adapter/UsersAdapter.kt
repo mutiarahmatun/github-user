@@ -43,7 +43,7 @@ class UsersAdapter (private val listUsers: MutableList<Users>) : RecyclerView.Ad
                         .apply(RequestOptions().override(55, 55))
                         .into(imgPhoto)
 
-                if(users.username.equals("Please try with another username")) {
+                if(users.username == "Please try with another username") {
                     txtName.text = users.name
                     txtUsername.text = users.username
                 }

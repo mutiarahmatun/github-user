@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Favorite User</string>
+    <string name="name_users">Name User</string>
+    <string name="total_repo" translatable="false">Total repository</string>
+    <string name="total_followers" translatable="false">Total Followers</string>
+    <string name="total_following" translatable="false">Total Following</string>
+    <string name="tag_repo">Repositories</string>
+    <string name="tag_followers">Followers</string>
+    <string name="tag_following">Following</string>
+    <string name="lorem" translatable="false">Lorem</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
+    <string name="username" translatable="false">Username</string>
+
+    <string name="tag_profile">Profile</string>
+    <string name="menu_1">Settings</string>
+    <string name="search">Search</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="hint">Search by Username</string>
+
+    <string name="TryOtherUname">Please try with another username</string>
+    <string name="CouldNotFind">Sorry, this username could not been find</string>
+    <string name="ZeroFollower">This user has 0 of Follower</string>
+    <string name="ZeroFollowing">This user has 0 of Following</string>
+    <string name="following" translatable="false">following</string>
+    <string name="followers" translatable="false">followers</string>
+    <string name="narasi" translatable="false">Developed with love by</string>
+    <string name="developer" translatable="false">Mutia Rahmatun Husna</string>
+    <string name="favorite">Favorite</string>
+    <string name="action_settings">Settings</string>
+    <string name="profile_desc_button_back">Button Back</string>
+    <string name="settings">Settings</string>
+    <string name="setting_desc_icon_arrow">Icon Arrow</string>
+    <string name="setting_daily_reminder">Daily Reminder</string>
+    <string name="daily_message">Find new favorite user on Github</string>
+</resources>

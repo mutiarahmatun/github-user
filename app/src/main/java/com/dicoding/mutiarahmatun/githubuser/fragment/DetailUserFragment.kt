@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.dicoding.mutiarahmatun.githubuser.MappingHelper
+import com.dicoding.mutiarahmatun.githubuser.helper.MappingHelper
 import com.dicoding.mutiarahmatun.githubuser.R
 import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.dicoding.mutiarahmatun.githubuser.databinding.FragmentDetailUserBinding
@@ -29,7 +29,6 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
     private lateinit var favoriteHelper: FavoriteHelper
     var usernameTemp = detailsUser.username
 
-    private var statusFavorite = false
 
     private fun setStatusFavorite(status: Boolean) {
         GlobalScope.launch(Dispatchers.Main) {
@@ -85,6 +84,7 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         Glide.with(this)
             .load(users.avatar)
             .apply(RequestOptions().override(550, 550))
@@ -99,6 +99,8 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
         detailBinding.repository.text = getString(R.string.tag_repo)
         detailBinding.followers.text = getString(R.string.tag_followers)
         detailBinding.following.text = getString(R.string.tag_following)
+
+        var statusFavorite =users.isFavorite
 
         GlobalScope.launch(Dispatchers.Main) {
             val thisContext = requireContext()
@@ -124,7 +126,6 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
             }
         }
 
-        setStatusFavorite(statusFavorite)
         detailBinding.favoriteButton.setOnClickListener{
             statusFavorite = !statusFavorite
             setStatusFavorite(statusFavorite)

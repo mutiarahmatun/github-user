@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 @Parcelize
 data class Users(
-        var id: Int? = 0,
+        var id: Int = 0,
         @SerializedName("login")
         var username: String,
         @SerializedName("name")

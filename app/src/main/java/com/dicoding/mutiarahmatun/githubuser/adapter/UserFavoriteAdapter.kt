@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.mutiarahmatun.githubuser.CustomOnClickListener
 import com.dicoding.mutiarahmatun.githubuser.R
+import com.dicoding.mutiarahmatun.githubuser.activity.FavoriteActivityHelper
 import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.dicoding.mutiarahmatun.githubuser.activity.TabLayout
 import com.dicoding.mutiarahmatun.githubuser.databinding.ItemUsersBinding
@@ -52,7 +53,7 @@ class UserFavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter
                         .apply(RequestOptions().override(55, 55))
                         .into(imgPhoto)
 
-                if(users.username.equals("Empty Favorite")) {
+                if(users.username == "Empty Favorite") {
                     txtName.text = users.name
                     txtUsername.text = users.username
                 }
@@ -66,31 +67,30 @@ class UserFavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter
 
                 }
 
-                itemView.setOnClickListener(
-                    CustomOnClickListener(
-                            adapterPosition,
-                            object : CustomOnClickListener.OnItemClickCallback {
-                                override fun onItemClicked(view: View, position: Int) {
-                                    val user = Users(users.id,
-                                            users.username,
-                                            users.name,
-                                            users.avatar,
-                                            users.followers,
-                                            users.following,
-                                            users.company,
-                                            users.location,
-                                            users.repository)
-                                    val intent = Intent(activity, TabLayout::class.java)
-                                    intent.putExtra(TabLayout.EXTRA_USER, user)
-                                    activity.startActivity(intent)
-                                }
-                            })
-                )
+                itemView.setOnClickListener(CustomOnClickListener(adapterPosition, object : CustomOnClickListener.OnItemClickCallback {
+                    override fun onItemClicked(view: View, position: Int) {
+                        val intent = Intent(activity, FavoriteActivityHelper::class.java)
+                        intent.putExtra(FavoriteActivityHelper.EXTRA_POSITION, position)
+                        intent.putExtra(FavoriteActivityHelper.EXTRA_FAVORITE, users)
+                        activity.startActivityForResult(intent, FavoriteActivityHelper.REQUEST_UPDATE)
+                    }
+                }))
             }
         }
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listFavoritesUser[position])
+    }
+
+    fun removeItem(position: Int) {
+        this.listFavoritesUser.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, this.listFavoritesUser.size)
+    }
+
+    fun addItem(users: Users) {
+        this.listFavoritesUser.add(users)
+        notifyItemInserted(this.listFavoritesUser.size - 1)
     }
 }

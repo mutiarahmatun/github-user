@@ -1,8 +1,8 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.consumerapp.helper
 
 import android.database.Cursor
+import com.dicoding.mutiarahmatun.consumerapp.model.Users
 import com.dicoding.mutiarahmatun.githubuser.db.DatabaseContract
-import com.dicoding.mutiarahmatun.githubuser.model.Users
 
 object MappingHelper {
 

@@ -16,13 +16,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val SQL_CREATE_TABLE_FAVORITE_USER = "CREATE TABLE $TABLE_NAME" +
                 " (${DatabaseContract.FavoriteColumns.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_USERNAME} TEXT NOT NULL," +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME} TEXT NOT NULL," +
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME} TEXT," +
                 " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_AVATAR_URL} TEXT NOT NULL," +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_FOLLOWERS} TEXT NOT NULL)" +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_FOLLOWING} TEXT NOT NULL)" +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_COMPANY} TEXT NOT NULL)" +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_LOCATION} TEXT NOT NULL)" +
-                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_REPOSITORY} TEXT NOT NULL)"
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_FOLLOWERS} TEXT," +
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_FOLLOWING} TEXT," +
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_COMPANY} TEXT," +
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_LOCATION} TEXT," +
+                " ${DatabaseContract.FavoriteColumns.COLUMN_NAME_REPOSITORY} TEXT)"
     }
 
     override fun onCreate(db: SQLiteDatabase) {

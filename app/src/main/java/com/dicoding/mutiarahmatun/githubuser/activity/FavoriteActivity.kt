@@ -1,11 +1,12 @@
 package com.dicoding.mutiarahmatun.githubuser.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.mutiarahmatun.githubuser.MappingHelper
+import com.dicoding.mutiarahmatun.githubuser.helper.MappingHelper
 import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.dicoding.mutiarahmatun.githubuser.adapter.UserFavoriteAdapter
 import com.dicoding.mutiarahmatun.githubuser.databinding.ActivityFavoriteBinding
@@ -21,11 +22,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var favoriteBinding: ActivityFavoriteBinding
     lateinit var adapter: UserFavoriteAdapter
-    private var dummyUser = Users(1,"Empty Favorite","", "", "","","","","")
-
-    companion object {
-        private const val EXTRA_FAVORITE = "favorite_user"
-    }
+    private var dummyUser = Users(0,"Empty Favorite","", "", "","","","","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +91,19 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun showSnackMessage(message: String) {
         Snackbar.make(favoriteBinding.rvFavoritesUser, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            when (requestCode) {
+                FavoriteActivityHelper.RESULT_DELETE -> {
+                    val position = data.getIntExtra(FavoriteActivityHelper.EXTRA_POSITION, 0)
+                    adapter.removeItem(position)
+                    showSnackMessage("Item ini berhasil dihapus")
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
