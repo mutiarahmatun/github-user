@@ -54,7 +54,7 @@ class FavoriteContentProvider : ContentProvider() {
             favoriteHelper = FavoriteHelper.getInstance(context as Context)
             favoriteHelper.open()
         }catch (e : Exception){
-            AsyncHttpClient.log.d("CONTENT PROVIDER - QUERY", "masuk exception $e")
+            AsyncHttpClient.log.d("CONTENT PROVIDER - QUERY", "enter exception $e")
             e.printStackTrace()
         }
         return true
@@ -62,7 +62,7 @@ class FavoriteContentProvider : ContentProvider() {
 
     override fun query(uri: Uri, projection: Array<String>?, selection: String?,
                        selectionArgs: Array<String>?, sortOrder: String?): Cursor? {
-        AsyncHttpClient.log.d("CONTENT PROVIDER - QUERY", "masuk query ${sUriMatcher.match(uri)}")
+        AsyncHttpClient.log.d("CONTENT PROVIDER - QUERY", "enter query ${sUriMatcher.match(uri)}")
         try {
             favoriteHelper = FavoriteHelper.getInstance(context as Context)
             favoriteHelper.open()

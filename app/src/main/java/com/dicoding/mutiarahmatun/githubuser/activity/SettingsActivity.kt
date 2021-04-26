@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
         binding.switchReminder.isChecked = isAlarm
         binding.switchReminder.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                val repeatTime = "20:08"
+                val repeatTime = "09.00"
                 val repeatMessage = getString(R.string.daily_message)
                 alarmReceiver.setDailyReminder(this, repeatTime, repeatMessage)
 

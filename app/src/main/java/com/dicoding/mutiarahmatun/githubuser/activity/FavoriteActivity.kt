@@ -29,7 +29,7 @@ class FavoriteActivity : AppCompatActivity() {
         favoriteBinding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(favoriteBinding.root)
 
-        supportActionBar?.title = "Favorite"
+        supportActionBar?.title = "Favorite User"
         favoriteBinding.rvFavoritesUser.layoutManager = LinearLayoutManager(this)
         favoriteBinding.rvFavoritesUser.setHasFixedSize(true)
 
