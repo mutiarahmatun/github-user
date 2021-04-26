@@ -49,7 +49,7 @@ class UserFavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter
                         .apply(RequestOptions().override(55, 55))
                         .into(imgPhoto)
 
-                if(users.username.equals("Empty Favorite")) {
+                if(users.username == "Empty Favorite") {
                     txtName.text = users.name
                     txtUsername.text = users.username
                 }
