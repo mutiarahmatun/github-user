@@ -1,9 +1,12 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.StringRes
+import com.dicoding.mutiarahmatun.githubuser.R
+import com.dicoding.mutiarahmatun.githubuser.model.Users
+import com.dicoding.mutiarahmatun.githubuser.adapter.AdapterSection
 import com.dicoding.mutiarahmatun.githubuser.databinding.ActivityTabLayoutBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -14,8 +17,8 @@ class TabLayout : AppCompatActivity() {
     companion object {
         @StringRes
         private val TAB_TITLE = intArrayOf(
-            R.string.tag_profile,
-            R.string.tag_following,
+                R.string.tag_profile,
+                R.string.tag_following,
                 R.string.tag_followers
         )
         const val EXTRA_USER = "extra_user"

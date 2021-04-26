@@ -1,4 +1,4 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.mutiarahmatun.githubuser.BuildConfig
+import com.dicoding.mutiarahmatun.githubuser.R
+import com.dicoding.mutiarahmatun.githubuser.model.Users
+import com.dicoding.mutiarahmatun.githubuser.adapter.UsersAdapter
 import com.dicoding.mutiarahmatun.githubuser.databinding.FragmentFollowersBinding
 import com.google.gson.Gson
 import com.loopj.android.http.AsyncHttpClient
@@ -23,8 +27,8 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
 
     private var users = mutableListOf<Users>()
     private var usersAdapter = UsersAdapter(users)
-    private var tempFollower = Users("This user has 0 of Follower","", "", "","","","","")
-    private var tempFollowing = Users("This user has 0 of Following","", "", "","","","","")
+    private var tempFollower = Users(0,"This user has 0 of Follower","", "", "","","","","")
+    private var tempFollowing = Users(0,"This user has 0 of Following","", "", "","","","","")
 
     private var tab = ""
 

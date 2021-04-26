@@ -1,4 +1,4 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.activity
 
 import android.app.SearchManager
 import android.content.Context
@@ -12,7 +12,10 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.mutiarahmatun.githubuser.*
+import com.dicoding.mutiarahmatun.githubuser.adapter.UsersAdapter
 import com.dicoding.mutiarahmatun.githubuser.databinding.ActivityMainBinding
+import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.google.gson.Gson
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity(){
     private var users = mutableListOf<Users>()
 
     private var userAdapter = UsersAdapter(users)
-    private var dummyUser = Users("Please try with another username","Sorry, this username could not been find", "", "","","","","")
+    private var dummyUser = Users(0,"Please try with another username","Sorry, this username could not been find", "", "","","","","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -198,9 +201,14 @@ class MainActivity : AppCompatActivity(){
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_change_settings) {
-            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-            startActivity(intent)
+        if (item.itemId == R.id.action_settings) {
+            val settingsIntent = Intent(this, SettingsActivity::class.java)
+            startActivity(settingsIntent)
+            return true
+        } else if (item.itemId == R.id.action_favorite) {
+            val favoriteIntent = Intent(this, FavoriteActivity::class.java)
+            startActivity(favoriteIntent)
+            return true
         }
         return super.onOptionsItemSelected(item)
     }

@@ -1,4 +1,4 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -6,8 +6,9 @@ import com.google.gson.annotations.SerializedName
 
 @Parcelize
 data class Users(
+        var id: Int? = 0,
         @SerializedName("login")
-        var username: String?,
+        var username: String,
         @SerializedName("name")
         var name: String?,
         @SerializedName("avatar_url")
@@ -22,4 +23,5 @@ data class Users(
         var location: String?,
         @SerializedName("public_repos")
         var repository: String?,
+        var isFavorite: Boolean = false
 ) : Parcelable

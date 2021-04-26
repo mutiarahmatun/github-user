@@ -1,8 +1,11 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.dicoding.mutiarahmatun.githubuser.fragment.DetailUserFragment
+import com.dicoding.mutiarahmatun.githubuser.fragment.FollowersFragment
+import com.dicoding.mutiarahmatun.githubuser.model.Users
 
 class AdapterSection(activity: AppCompatActivity, user: Users) : FragmentStateAdapter(activity) {
 

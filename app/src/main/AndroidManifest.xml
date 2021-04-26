@@ -11,18 +11,22 @@
         android:roundIcon="@drawable/icon_github"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser">
+        <activity android:name=".activity.FavoriteActivity"></activity>
         <activity
-            android:name=".TabLayout"
-            android:parentActivityName=".MainActivity">
+            android:name=".activity.SettingsActivity"
+            android:theme="@style/Theme.GithubUser.NoActionBar" />
+        <activity
+            android:name=".activity.TabLayout"
+            android:parentActivityName=".activity.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:theme="@style/Theme.GithubUser.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

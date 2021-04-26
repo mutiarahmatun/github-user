@@ -8,11 +8,16 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
 
-    <group android:menuCategory="container">
-        <item
-            android:id="@+id/action_change_settings"
-            android:title="@string/change_language_settings"
-            app:showAsAction="never"/>
-    </group>
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/icon_favorite_filled"
+        android:title="@string/favorite"
+        app:showAsAction="collapseActionView|always"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_baseline_settings"
+        app:showAsAction="ifRoom|withText" />
 
 </menu>

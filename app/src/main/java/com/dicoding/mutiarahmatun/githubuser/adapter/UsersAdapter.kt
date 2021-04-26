@@ -1,10 +1,11 @@
-package com.dicoding.mutiarahmatun.githubuser
+package com.dicoding.mutiarahmatun.githubuser.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.dicoding.mutiarahmatun.githubuser.databinding.ItemUsersBinding
 
 class UsersAdapter (private val listUsers: MutableList<Users>) : RecyclerView.Adapter<UsersAdapter.ListViewHolder>() {
