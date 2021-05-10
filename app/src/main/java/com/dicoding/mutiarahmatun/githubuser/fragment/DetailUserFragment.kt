@@ -43,9 +43,9 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
                     var dataTemp = dataFavoriteUser()
                     val insertResult = favoriteHelper.insert(dataTemp)
                     if (insertResult > 0) {
-                        Toast.makeText(thisContext, "Success add to Favorite", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(thisContext, getString(R.string.success_add_favorite), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(thisContext, "Failed add to Favorite", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(thisContext, getString(R.string.failed_add_favorite), Toast.LENGTH_SHORT).show()
                     }
 
                 } else {
@@ -53,9 +53,9 @@ class DetailUserFragment (detailsUser: Users) : Fragment(R.layout.fragment_detai
 
                     val deleteResult = favoriteHelper.deleteByUserName(usernameTemp).toLong()
                     if (deleteResult > 0) {
-                        Toast.makeText(thisContext, "Success delete from Favorite", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(thisContext, getString(R.string.success_delete_fav), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(thisContext, "Failed delete from Favorite", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(thisContext, getString(R.string.failed_delete_fav), Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e : Exception){

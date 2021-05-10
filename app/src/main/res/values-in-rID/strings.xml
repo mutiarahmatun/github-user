@@ -30,4 +30,10 @@
     <string name="summary_language_setting">Terdapat Bahasa Indonesia dan Inggris</string>
     <string name="reminder_is_set">Pengingat diaktifkan</string>
     <string name="reminder_not_set">Pengingat di nonaktifkan</string>
+    <string name="success_add_favorite">Success add to Favorite</string>
+    <string name="failed_add_favorite">Failed add to Favorite</string>
+    <string name="success_delete_fav">Success delete from Favorite</string>
+    <string name="failed_delete_fav">Failed delete from Favorite</string>
+    <string name="empty_favorite">Tidak terdapat data saat ini</string>
+    <string name="success_delete">Item ini berhasil dihapus</string>
 </resources>

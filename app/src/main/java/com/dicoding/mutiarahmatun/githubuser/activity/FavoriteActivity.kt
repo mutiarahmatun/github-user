@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.mutiarahmatun.githubuser.R
 import com.dicoding.mutiarahmatun.githubuser.helper.MappingHelper
 import com.dicoding.mutiarahmatun.githubuser.model.Users
 import com.dicoding.mutiarahmatun.githubuser.adapter.UserFavoriteAdapter
@@ -77,7 +78,7 @@ class FavoriteActivity : AppCompatActivity() {
                     favoriteBinding.progressbarFavorite.visibility = View.INVISIBLE
                     adapter.listFavoritesUser = listTemp
                     favoriteBinding.rvFavoritesUser.adapter?.notifyDataSetChanged()
-                    showSnackMessage("Tidak terdapat data saat ini")
+                    showSnackMessage(getString(R.string.empty_favorite))
                 }
             }catch (e : Exception){
                 AsyncHttpClient.log.d("${this@FavoriteActivity}", e.toString())
@@ -100,7 +101,7 @@ class FavoriteActivity : AppCompatActivity() {
                 FavoriteActivityHelper.RESULT_DELETE -> {
                     val position = data.getIntExtra(FavoriteActivityHelper.EXTRA_POSITION, 0)
                     adapter.removeItem(position)
-                    showSnackMessage("Item ini berhasil dihapus")
+                    showSnackMessage(getString(R.string.success_delete))
                 }
             }
         }
