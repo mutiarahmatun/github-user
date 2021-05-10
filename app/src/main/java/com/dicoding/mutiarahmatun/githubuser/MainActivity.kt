@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(){
 
         val client = AsyncHttpClient()
 
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/search/users?q=$tempSearch"
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity(){
 
         val clientDetail = AsyncHttpClient()
 
-        clientDetail.addHeader("Authorization", "token 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")
+        clientDetail.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         clientDetail.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/users/${detailUsers.username}"
