@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        android:icon="@drawable/ic_notifications_active_black_24"
+        app:key="@string/key_reminder"
+        app:title="@string/title_reminder_setting"/>
+
+    <Preference
+        android:icon="@drawable/ic_change_language_black_24"
+        app:key="@string/key_change_language"
+        app:title="@string/title_language_setting"
+        app:summary="@string/summary_language_setting"/>
+
+</androidx.preference.PreferenceScreen>

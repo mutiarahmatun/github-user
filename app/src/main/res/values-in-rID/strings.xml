@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github Users</string>
+    <string name="name_users">Nama Pengguna</string>
+    <string name="tag_repo">Repositori</string>
+    <string name="tag_followers">Pengikut</string>
+    <string name="tag_following">Mengikuti</string>
+    <string name="location">Lokasi</string>
+    <string name="company">Perusahaan</string>
+
+    <string name="tag_profile">Profil</string>
+    <string name="menu_1">Pengaturan</string>
+    <string name="search">Cari</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="hint">Cari berdasarkan username</string>
+
+    <string name="TryOtherUname">Silahkan cari username lainnya</string>
+    <string name="CouldNotFind">Maaf, username ini tidak ditemukan</string>
+    <string name="ZeroFollower">Pengguna ini memiliki 0 pengikut</string>
+    <string name="ZeroFollowing">Pengguna ini mengikuti 0 pengguna</string>
+    <string name="favorite">Favorit</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="profile_desc_button_back">Tombol Kembali</string>
+    <string name="settings">Pengaturan</string>
+    <string name="setting_desc_icon_arrow">Icon Arrow</string>
+    <string name="setting_daily_reminder">Pengingat Harian</string>
+    <string name="daily_message">Temukan pengguna favorit pada Github</string>
+    <string name="title_reminder_setting">Pengingat pukul 9.00 AM</string>
+    <string name="title_language_setting">Pilih Bahasa</string>
+    <string name="summary_language_setting">Terdapat Bahasa Indonesia dan Inggris</string>
+    <string name="reminder_is_set">Pengingat diaktifkan</string>
+    <string name="reminder_not_set">Pengingat di nonaktifkan</string>
+</resources>
